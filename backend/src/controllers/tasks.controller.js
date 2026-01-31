@@ -3,7 +3,7 @@ import Tasks from "../models/tasks.model.js";
 export async function getTasks(req, res) {
   try {
     const tasks = await Tasks.find().sort({ createdAt: -1 });
-    res.status(200).json(Tasks);
+    res.status(200).json(tasks);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
