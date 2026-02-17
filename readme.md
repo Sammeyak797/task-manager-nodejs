@@ -1,15 +1,48 @@
-# Task Manager App
+# 📝 Task Manager Application
 
-A full-stack task management application built with:
+A full-stack Task Management application built using:
 
-- Node.js
-- Express.js
-- MongoDB
-- React (Vite)
+- **Node.js**
+- **Express.js**
+- **MongoDB (Mongoose)**
+- **React (Vite)**
+
+This project demonstrates clean architecture, RESTful API design, MongoDB aggregation queries, filtering, sorting, and frontend state management.
 
 ---
 
-## 📦 Project Setup
+# 🚀 Features
+
+## 🔹 Backend Features
+
+- Create, read, update, delete tasks
+- Filter tasks by:
+  - Completion status
+  - Priority
+- Sorting support via query parameters
+- MongoDB aggregation for task statistics
+- Overdue task detection (incomplete tasks older than 7 days)
+- Enum validation for priority (`low`, `medium`, `high`)
+- Proper error handling (400 / 404 / 500)
+- Service layer architecture (business logic separated from controllers)
+- Configured CORS for frontend access
+
+---
+
+## 🔹 Frontend Features
+
+- Add new tasks with validation (min 3 characters)
+- Toggle task completion
+- Delete tasks
+- Filter tasks by status and priority
+- Responsive UI layout
+- Priority-based visual indicators
+- Completed task styling (muted + strikethrough)
+- Clean and modern UI design
+
+---
+
+# 📦 Project Setup
 
 Clone the repository:
 
@@ -17,115 +50,3 @@ Clone the repository:
 git clone <your-repo-url>
 cd project
 ```
-
----
-
-## 🔧 Backend Setup
-
-Go to backend folder:
-
-```bash
-cd backend
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Create a `.env` file inside backend folder:
-
-```
-PORT=3000
-MONGO_URI=your_mongodb_connection_string
-```
-
-Start backend server:
-
-```bash
-node server.js
-```
-
-or if using nodemon:
-
-```bash
-npm run dev
-```
-
-Backend will run on:
-
-```
-http://localhost:3000
-```
-
----
-
-## 🎨 Frontend Setup
-
-Open a new terminal.
-
-Go to frontend folder:
-
-```bash
-cd frontend
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start frontend:
-
-```bash
-npm run dev
-```
-
-Frontend will run on:
-
-```
-http://localhost:5173
-```
-
----
-
-## 🔗 API Endpoint
-
-```
-GET    /api/tasks
-POST   /api/tasks
-PATCH  /api/tasks/:id
-DELETE /api/tasks/:id
-```
-
-Base URL:
-
-```
-http://localhost:3000/api/tasks
-```
-
----
-
-## 🚀 Run Full Application
-
-1. Start backend server
-2. Start frontend server
-3. Open browser → http://localhost:5173
-
----
-
-## 🛠 Tech Stack
-
-- Express.js
-- MongoDB + Mongoose
-- React + Vite
-- CORS
-- dotenv
-
----
-
-## 👨‍💻 Author
-
-Your Name

@@ -4,15 +4,21 @@ const taskSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
-      minlength: 3,
+      required: [true, "Title is required"],
+      minlength: [3, "Title must be at least 3 characters"],
+      trim: true,
     },
     description: {
       type: String,
-      required: true,
+      trim: true,
+      default: "",
     },
     priority: {
       type: String,
+      enum: {
+        values: ["low", "medium", "high"],
+        message: "Priority must be low, medium, or high",
+      },
       default: "medium",
     },
     completed: {
@@ -23,6 +29,6 @@ const taskSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-const Tasks = mongoose.model("Task", taskSchema);
+const Task = mongoose.model("Task", taskSchema);
 
-export default Tasks;
+export default Task;

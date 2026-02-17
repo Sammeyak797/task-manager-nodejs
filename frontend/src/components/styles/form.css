@@ -1,26 +1,62 @@
 .task-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
 
+/* Inputs & Select */
 .task-form input,
 .task-form select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 100%; /* 🔥 Important */
+  padding: 14px 16px; /* Bigger padding */
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #fafafa;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+/* Focus state */
+.task-form input:focus,
+.task-form select:focus {
+  outline: none;
+  border-color: #1976d2;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+}
+
+/* Button */
 .task-form button {
-  padding: 10px;
+  width: 100%;
+  padding: 14px;
   border: none;
-  background: #007bff;
+  background: #1976d2;
   color: white;
-  border-radius: 5px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
 }
 
 .task-form button:hover {
-  background: #0056b3;
+  background: #1565c0;
+}
+
+.task-form button:active {
+  transform: scale(0.98);
+}
+
+.task-form button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
 }

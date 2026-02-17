@@ -7,9 +7,15 @@ export default function Dashboard() {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const fetchTasks = async () => {
+    const [filter, setFilter] = useState({
+        completed: "",
+        priority: "",
+    });
+
+    const fetchTasks = async (filters = {}) => {
         try {
-            const res = await getTasks();
+            setLoading(true);
+            const res = await getTasks(filters);
             setTasks(res.data);
         } catch (err) {
             console.error(err);
@@ -19,25 +25,32 @@ export default function Dashboard() {
     };
 
     useEffect(() => {
-        fetchTasks();
-    }, []);
+        fetchTasks(filter);
+    }, [filter]);
 
     const handleAdd = async (task) => {
         const res = await createTask(task);
-        setTasks([res.data, ...tasks]);
+        setTasks((prev) => [res.data, ...prev]);
     };
 
     const handleToggle = async (task) => {
-        const res = await updateTask(task._id, {
-            completed: !task.completed,
-        });
-
-        setTasks(tasks.map((t) => (t._id === task._id ? res.data : t)));
+        const res = await updateTask(task._id);
+        setTasks((prev) =>
+            prev.map((t) => (t._id === task._id ? res.data : t))
+        );
     };
 
     const handleDelete = async (id) => {
         await deleteTask(id);
-        setTasks(tasks.filter((t) => t._id !== id));
+        setTasks((prev) => prev.filter((t) => t._id !== id));
+    };
+
+    const handleFilterChange = (e) => {
+        const { name, value } = e.target;
+        setFilter((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
     if (loading) return <p>Loading...</p>;
@@ -46,9 +59,25 @@ export default function Dashboard() {
         <div className="container">
             <h1>Task Manager</h1>
 
+            {/* Filter Dropdown */}
+            <div className="filter-bar">
+                <select name="completed" onChange={handleFilterChange}>
+                    <option value="">All Status</option>
+                    <option value="true">Completed</option>
+                    <option value="false">Pending</option>
+                </select>
+
+                <select name="priority" onChange={handleFilterChange}>
+                    <option value="">All Priority</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+
             <TaskForm onAdd={handleAdd} />
 
-            {tasks.length === 0 && <p>No tasks yet.</p>}
+            {tasks.length === 0 && <p>No tasks found.</p>}
 
             {tasks.map((task) => (
                 <TaskCard

@@ -10,9 +10,10 @@ import {
 
 const router = express.Router();
 
-router.get("/", getTasks);
 router.get("/stats", getStats);
-router.get("/getOverdueTask", getOverdueTask);
+router.get("/overdue", getOverdueTask);
+
+router.get("/", getTasks);
 router.post("/", postTasks);
 router.patch("/:id", patchTasks);
 router.delete("/:id", deleteTasks);
