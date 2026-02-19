@@ -1,0 +1,39 @@
+/* 🔴 OVERDUE SECTION (SOFT + MODERN) */
+.overdue-section {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff7f7;
+  border: 1px solid #ffe1e1;
+}
+
+/* HEADER */
+.overdue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.overdue-header h2 {
+  color: #cf1322;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* COUNT BADGE (cleaner pill) */
+.overdue-count {
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* TASK LIST */
+.overdue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

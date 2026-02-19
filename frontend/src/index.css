@@ -44,3 +44,9 @@ body {
   border: 1px solid #ccc;
   cursor: pointer;
 }
+
+.task-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 🔥 increase this */
+}

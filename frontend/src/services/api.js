@@ -11,3 +11,7 @@ export const createTask = (data) => API.post("/", data);
 export const updateTask = (id) => API.patch(`/${id}`);
 
 export const deleteTask = (id) => API.delete(`/${id}`);
+
+export const getOverdueTasks = () => API.get("/overdue");
+
+export const getTaskStats = () => API.get("/stats");

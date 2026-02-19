@@ -32,6 +32,7 @@ export default function TaskForm({ onAdd }) {
         setDescription("");
         setPriority("medium");
         setError("");
+
     };
 
     return (
